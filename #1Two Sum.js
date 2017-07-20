@@ -16,6 +16,7 @@ return [0, 1]
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+	//声明返回数组
     var indexArr = [];
     for(var i = 0; i < nums.length; i++){
         for(var j = i + 1; j < nums.length; j++){

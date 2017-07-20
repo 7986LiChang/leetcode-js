@@ -44,3 +44,11 @@ var addTwoNumbers = function(l1, l2) {
     }
     return addListNodeHead.next;
 };
+
+/**
+ * 值得记录的思路点：
+ * 1、利用构造函数生成链表结构
+ * 2、每个链表都有一个头结点
+ * 3、链表指针的后移，cur = cur.next
+ * 4、边界范围的判断
+ */
