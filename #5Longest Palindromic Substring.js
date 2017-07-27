@@ -68,14 +68,13 @@ var longestPalindrome = function(s) {
     return longsubstr;
 };
 
-
-/**
- * 利用动态规划思想
+/*
+    利用动态规划思想，O(n*2)
  */
 var longestPalindrome = function(s) {
     var longsubstr1 ="", longsubstr2 = "";
     var maxlen1 = 0, maxlen2 = 0;
-    //利用动态规划判断奇数的情况，以中间元素为基准，向两边扩展
+    //如aba，利用动态规划判断奇数的情况，以中间元素为基准，向两边扩展
     for(var i = 0; i < s.length; i++){
         for(var j = 0; i - j >= 0 && i + j < s.length; j++){
             if(s[i - j] == s[i + j]){
@@ -85,10 +84,12 @@ var longestPalindrome = function(s) {
                     longsubstr1 = s.substring(i - j, i + j + 1);
                 }
             }
+            //只要出现不相等的情况，就不可能再是回文，跳出当前循环，i++
+            else break;
                 
         }
     }
-    //利用动态规划再判断偶数的情况，首先当前元素与其后面元素相等，其次再比较两边
+    //如abba，利用动态规划再判断偶数的情况，首先当前元素与其后面元素相等，其次再比较两边
     for(var m = 0; m < s.length; m++){
         if(s[m] == s[m + 1]){
             for(var n = 0; m - n >= 0 && m + 1 + n < s.length; n++){
@@ -98,9 +99,11 @@ var longestPalindrome = function(s) {
                         longsubstr2 = s.substring(m - n , m + 2 + n);
                     }
                 }
+                //只要出现不相等的情况，就不可能再是回文，跳出当前循环，m++
+                else break;
             }
         }
     }
-    // return longsubstr2;
+    //返回奇数、偶数情况下，更长的子串
     return (longsubstr1.length > longsubstr2.length) ? longsubstr1 : longsubstr2;
 };
