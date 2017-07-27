@@ -67,3 +67,48 @@ var longestPalindrome = function(s) {
 
     return longsubstr;
 };
+
+
+/**
+ * 利用动态规划思想
+ */
+var longestPalindrome = function(s) {
+    var longsubstr1 ="", longsubstr2 = "", longsubstr= "";
+    var maxlen1 = 0, maxlen2 = 0;
+    var i = 0, j = 0;
+    while(i < s.length){
+        if(s[i - j] === s[i + j]){
+            if(maxlen1 < 2 * j + 1){
+                maxlen1 = 2 * j + 1;
+                longsubstr1 = s.substring(i - j, i + j + 1);
+            }
+            j++;
+            if(i - j < 0 || i + j >= s.length){
+                i++;
+                j = 0;
+            }
+        }
+        else if(s[i] === s[i + 1]){
+            var m =0;
+            if(s[i - m] === s[i + 1 + m]){
+                if(maxlen2 < 2 * m + 2){
+                    maxlen2 = 2 * m + 2;
+                    longsubstr2 = s.substring(i - m, i + 2 + m);
+                }
+                m++;
+            }
+            if( i - m < 0 || i + m + 1 >= s.length){
+                i++;
+                m = 0;
+            }
+            else break;
+        }
+        else{
+            i++;
+            j = 0;
+            m = 0;
+        }
+    }
+    
+    return (longsubstr1.length > longsubstr2.length) ? longsubstr1 : longsubstr2;
+};
