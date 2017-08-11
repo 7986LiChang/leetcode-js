@@ -9,42 +9,43 @@
  * [读取一行输入，按逗号/空格分开]
  * @type {[type]}
  */
-// var readline = require("readline");
-// const rl = readline.createInterface({
-// 	input: process.stdin,
-// 	output: process.stdout
-// });
+var readline = require("readline");
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+});
 
-// rl.on("line", function(line){
-// 	var tokens = line.split(",");
-// 	console.log("You input :" + 
-// 		parseInt(tokens[0]) + ", " + parseInt(tokens[1]));
-// });
+rl.on("line", function(line){
+	var tokens = line.split(",");
+	console.log("You input :" + 
+		parseInt(tokens[0]) + ", " + parseInt(tokens[1]));
+});
 
 
 /**
  * 给定输入行数，如：输入2行数据，并输出
  */
-// var readline = require('readline');
-// const rl = readline.createInterface({
-// 	input: process.stdin,
-// 	output: process.stdout
-// });
-// var countLine = 1;
-// var tokens = [];
+var readline = require('readline');
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+});
+var countLine = 1;
+var tokens = [];
 
-// rl.on('line', function(line){
-// 	tokens.push(line);
-// 	if(countLine === 2){
-// 		console.log("第一行输入" + tokens[0] + "第二行输入" + tokens[1]);
+rl.on('line', function(line){
+	tokens.push(line);
 
-// 		countLine = 1;
-// 		tokens = [];
-// 	}
-// 	else{
-// 		countLine++;
-// 	}
-// });
+	if(countLine === 2){
+		console.log("第一行输入" + tokens[0] + "第二行输入" + tokens[1]);
+		console.log(tokens[1].split(" "));
+		countLine = 1;
+		tokens = [];
+	}
+	else{
+		countLine++;
+	}
+});
 
 /**
  * 读取多行输入
@@ -59,37 +60,43 @@ process.stdin.on("data", function(data){
 	input += data;
 });
 
-process.stdin.on("end", function(){
+// process.stdin.on("end", function(){
+// 	input_array = input.split("\n");
+// 	console.log("多行输入：" + input_array);
+// });
+//在本地终端使用，要修改end事件。使用ctrl+c得到输出
+process.on('SIGINT', function(){
 	input_array = input.split("\n");
-	console.log("多行输入：" + input_array);
+	console.log("第1行:" + input_array[0] +　"第2行" + input_array[1] + "第3行:" + input_array[2]);
+	console.log(input_array);
+	process.exit(0);
 });
-
 
 /**
  * example
  */
-// var readline = require('readline');
+var readline = require('readline');
 
-// var rl = readline.createInterface({
-// 	input: process.stdin,
-// 	output: process.stdout
-// });
+var rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+});
 
-// //设置类似real编辑器的">"提示
-// rl.setPrompt('Input>');
-// rl.prompt();
+//设置类似real编辑器的">"提示
+rl.setPrompt('Input>');
+rl.prompt();
 
-// rl.question('你是2B吗？', function(answer){
-// 	switch(answer){
-// 		case 'no':
-// 			console.log('no no no,显然你就是！hahahahah');
-// 			break;
-// 		case 'yes':
-// 			console.log('good bye,2b!');
-// 			rl.close();
-// 			break;
-// 		default:
-// 			console.log('只能回答yes / no!');
-// 			break;
-// 	}
-// });
+rl.question('你是2B吗？', function(answer){
+	switch(answer){
+		case 'no':
+			console.log('no no no,显然你就是！hahahahah');
+			break;
+		case 'yes':
+			console.log('good bye,2b!');
+			rl.close();
+			break;
+		default:
+			console.log('只能回答yes / no!');
+			break;
+	}
+});
