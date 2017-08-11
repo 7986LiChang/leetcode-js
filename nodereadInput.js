@@ -23,46 +23,46 @@
 
 
 /**
- * 输入2行数据，并输出
+ * 给定输入行数，如：输入2行数据，并输出
  */
-var readline = require('readline');
-const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout
-});
-var countLine = 1;
-var tokens = [];
+// var readline = require('readline');
+// const rl = readline.createInterface({
+// 	input: process.stdin,
+// 	output: process.stdout
+// });
+// var countLine = 1;
+// var tokens = [];
 
-rl.on('line', function(line){
-	tokens.push(line);
-	if(countLine === 2){
-		console.log("第一行输入" + tokens[0] + "第二行输入" + tokens[1]);
+// rl.on('line', function(line){
+// 	tokens.push(line);
+// 	if(countLine === 2){
+// 		console.log("第一行输入" + tokens[0] + "第二行输入" + tokens[1]);
 
-		countLine = 1;
-		tokens = [];
-	}
-	else{
-		countLine++;
-	}
-});
+// 		countLine = 1;
+// 		tokens = [];
+// 	}
+// 	else{
+// 		countLine++;
+// 	}
+// });
 
 /**
  * 读取多行输入
  */
-// process.stdin.resume();
-// process.stdin.setEncoding("ascii");
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
 
-// var input = "";
-// var input_array = "";
+var input = "";
+var input_array = "";
 
-// process.stdin.on("data", function(data){
-// 	input += data;
-// });
+process.stdin.on("data", function(data){
+	input += data;
+});
 
-// process.stdin.on("end", function(){
-// 	input_array = input.split("\n");
-// 	console.log("多行输入：" + input_array[0] + " , " + input_array[1]);
-// });
+process.stdin.on("end", function(){
+	input_array = input.split("\n");
+	console.log("多行输入：" + input_array);
+});
 
 
 /**
