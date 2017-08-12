@@ -19,6 +19,8 @@ rl.on("line", function(line){
 	var tokens = line.split(",");
 	console.log("You input :" + 
 		parseInt(tokens[0]) + ", " + parseInt(tokens[1]));
+
+	//add code here
 });
 
 
@@ -39,6 +41,8 @@ rl.on('line', function(line){
 	if(countLine === 2){
 		console.log("第一行输入" + tokens[0] + "第二行输入" + tokens[1]);
 		console.log(tokens[1].split(" "));
+		//add code here
+
 		countLine = 1;
 		tokens = [];
 	}
@@ -60,17 +64,20 @@ process.stdin.on("data", function(data){
 	input += data;
 });
 
-// process.stdin.on("end", function(){
-// 	input_array = input.split("\n");
-// 	console.log("多行输入：" + input_array);
-// });
-//在本地终端使用，要修改end事件。使用ctrl+c得到输出
-process.on('SIGINT', function(){
+process.stdin.on("end", function(){
 	input_array = input.split("\n");
-	console.log("第1行:" + input_array[0] +　"第2行" + input_array[1] + "第3行:" + input_array[2]);
-	console.log(input_array);
-	process.exit(0);
+	console.log("多行输入：" + input_array);
+	//add code here
+
 });
+
+//在本地终端使用，要修改end事件。使用ctrl+c得到输出
+// process.on('SIGINT', function(){
+// 	input_array = input.split("\n");
+// 	console.log("第1行:" + input_array[0] +　"第2行" + input_array[1] + "第3行:" + input_array[2]);
+// 	console.log(input_array);
+// 	process.exit(0);
+// });
 
 /**
  * example
