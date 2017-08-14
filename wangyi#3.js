@@ -13,5 +13,12 @@ rl.on('line',function(line){
 	var str = line,
 	    maxlen = 1;   //输入的字符串
 	    console.log(str.length);
-	
+	    for(var i = 0; i < str.length; i++){
+	    	for(var j = i ; j < str.length; j++){
+	    		if(str[j] !== str[j + 1]){
+	    			
+	    		}
+	    	}
+	    }
+
 });
