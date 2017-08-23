@@ -14,11 +14,13 @@ rl.on('line',function(line){
 	    maxlen = 1;   //输入的字符串
 	    console.log(str.length);
 	    for(var i = 0; i < str.length; i++){
-	    	for(var j = i ; j < str.length; j++){
-	    		if(str[j] !== str[j + 1]){
-	    			
+	    	for(var j = i ; j < str.length - 1; j++){
+	    		if(str[j] === str[j + 1]){                            
+	    			break;
+	    		}else{
+	    			maxlen = Math.max(j - i + 2, maxlen);
 	    		}
 	    	}
 	    }
-
+	    console.log(maxlen);
 });
